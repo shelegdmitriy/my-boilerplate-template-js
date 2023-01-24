@@ -75,7 +75,6 @@ jobs:
       - name: Build 
         run: |
           npm run build
-          cd frontend && npm run next export
           touch out/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
