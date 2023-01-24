@@ -72,10 +72,11 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Build contract
-        run: npm run build
-      - name: Deploy contract
-        run: npm run deploy
+      - name: Build 
+        run: |
+          npm run build
+          npm run export
+          touch out/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
@@ -90,5 +91,8 @@ jobs:
     needs: build
     steps:
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          branch: gh-pages
+          folder: out
+
