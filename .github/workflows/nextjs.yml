@@ -76,10 +76,6 @@ jobs:
         run: |
           npm run build
           touch frontend/out/.nojekyll
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: ./out
 
   # Deployment job
   deploy:
@@ -93,5 +89,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           branch: gh-pages
-          folder: out
+          folder: frontend/out
 
