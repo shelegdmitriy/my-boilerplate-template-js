@@ -7,6 +7,7 @@
     "dev": "npm run deploy:check && cd frontend && npm run dev",
     "deploy": "cd contract && npm run deploy",
     "build": "npm run build:contract && npm run build:frontend",
+    "exportstatic:frontend": "cd frontend && npm run exportstatic",
     "build:frontend": "cd frontend && npm run build",
     "build:contract": "cd contract && npm run build",
     "test": "npm run test:unit && npm run test:integration",
